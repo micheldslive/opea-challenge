@@ -77,6 +77,9 @@ const globalStyles = globalCss({
     WebkitFontSmoothing: 'antialiased',
     border: 0
   },
+  body: {
+    background: '$background'
+  },
   '::-webkit-scrollbar': {
     width: '0.375rem'
   },
