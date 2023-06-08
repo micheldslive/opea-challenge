@@ -1,7 +1,7 @@
 import * as S from './styled';
 
 export const Header = () => (
-  <S.Header>
+  <S.Header aria-label='header'>
     <S.HeaderContainter>
       <S.OpeaLogo />
       <S.UserLink
