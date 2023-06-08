@@ -27,8 +27,15 @@ export const {
       headerDesktop: '3.5rem',
       headerMobile: '7rem'
     },
+    sizes: {
+      headerDesktop: '3.5rem',
+      headerMobile: '7rem'
+    },
     transitions: {
       duration: '0.3s'
+    },
+    shadows: {
+      small: '0 1px 2px 0 rgba(0,0,0,.05)'
     }
   },
   media: {
@@ -81,10 +88,6 @@ const globalStyles = globalCss({
     borderRadius: '10px',
     border: '10px solid $primary'
   },
-  svg: {
-    width: '2rem',
-    height: '2rem'
-  },
   figure: {
     margin: 0
   },
@@ -121,9 +124,11 @@ const globalStyles = globalCss({
     color: '$primary',
     fontWeight: 500
   },
+  section: {
+    maxWidth: '1450px',
+    margin: 'auto'
+  },
   a: {
-    borderBottom: '1px solid $primary',
-    color: '$primary',
     textDecoration: 'none',
     transition: 'opacity $duration ease-in-out'
   },

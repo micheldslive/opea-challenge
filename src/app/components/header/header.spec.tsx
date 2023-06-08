@@ -6,8 +6,6 @@ describe('<Header />', () => {
   it('should render the Header', () => {
     render(<Header />);
 
-    expect(
-      screen.getByRole('heading', { name: /Header/i })
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText(/header/i)).toBeInTheDocument();
   });
 });
