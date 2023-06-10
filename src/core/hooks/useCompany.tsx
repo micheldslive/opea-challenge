@@ -1,14 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { CompanyAPI } from '@/src/core/schemas/company';
+import { CompanyAPI } from '@/src/core/schemas';
 import { useRouter } from 'next/router';
 import { toast } from 'sonner';
 import { useMemo } from 'react';
 import { type CompanyFormProps } from '@/src/@types';
 import { useTranslation } from 'next-i18next';
+import { api } from '../utils';
 
 export const companyListKey = ['company-list'];
 export const limit = 12;
-const baseURL = process.env.NEXT_APP_BASE_URL;
+const baseURL = process.env.BASE_URL;
 
 export const useCompany = () => {
   const queryClient = useQueryClient();
@@ -38,14 +39,7 @@ export const useCompany = () => {
   );
 
   const { mutate: deleteCompany } = useMutation(
-    (id: string) =>
-      fetch(`${baseURL}/${id}`, {
-        body: JSON.stringify({ id }),
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }),
+    (id: string) => api({ method: 'DELETE', id }),
     {
       onSuccess: () => {
         void queryClient.invalidateQueries(companyListKey);
@@ -58,14 +52,7 @@ export const useCompany = () => {
   );
 
   const { mutate: createCompany } = useMutation(
-    (body: CompanyFormProps) =>
-      fetch(`${baseURL}`, {
-        body: JSON.stringify({ ...body }),
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }),
+    (body: CompanyFormProps) => api({ method: 'POST', body }),
     {
       onSuccess: (__, variables) => {
         void queryClient.invalidateQueries(companyListKey);
@@ -84,13 +71,7 @@ export const useCompany = () => {
 
   const { mutate: updateCompany } = useMutation(
     ({ body, id }: { body: CompanyFormProps; id: string }) =>
-      fetch(`${baseURL}/${id}`, {
-        body: JSON.stringify({ ...body }),
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }),
+      api({ method: 'PUT', body, id }),
     {
       onSuccess: (__, variables) => {
         void queryClient.invalidateQueries(companyListKey);
