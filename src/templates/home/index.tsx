@@ -1,15 +1,30 @@
 import { SearchBar, CompanyList, CompanyFormModal } from '@/src/components';
 import { CompanyFormProvider } from '@/src/core/hooks';
+import { useTranslation } from 'next-i18next';
+import Head from 'next/head';
 import * as S from './styled';
 
 export const HomeTemplate = () => {
+  const { t } = useTranslation();
   return (
-    <S.HomeLayout>
-      <SearchBar />
-      <CompanyList />
-      <CompanyFormProvider>
-        <CompanyFormModal />
-      </CompanyFormProvider>
-    </S.HomeLayout>
+    <>
+      <Head>
+        <title>{t('pages.home.title')}</title>
+        <meta content={t('pages.home.title')} property='og:title' />
+        <meta content={t('pages.home.description')} name='description' />
+        <meta content={t('pages.home.description')} property='og:description' />
+        <meta
+          content='https://opea-challenge-micode.vercel.app/'
+          property='og:url'
+        />
+      </Head>
+      <S.HomeLayout>
+        <SearchBar />
+        <CompanyList />
+        <CompanyFormProvider>
+          <CompanyFormModal />
+        </CompanyFormProvider>
+      </S.HomeLayout>
+    </>
   );
 };

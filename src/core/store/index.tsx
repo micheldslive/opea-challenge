@@ -1,15 +1,6 @@
 import { createStore, useStore } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-interface IOpeaProps {
-  dark: boolean;
-  locale: string;
-}
-
-interface IOpeaStore extends IOpeaProps {
-  setDark: (updater: (prev: boolean) => boolean) => void;
-  setLanguage: (language: IOpeaProps['locale']) => void;
-}
+import { type IOpeaStore } from '@/src/@types';
 
 export const opeaStore = createStore<IOpeaStore>()(
   persist(
