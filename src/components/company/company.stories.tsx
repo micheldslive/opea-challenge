@@ -7,9 +7,7 @@ export default {
 };
 
 const Template: StoryFn = () => {
-  return (
-    <Company company={{ cnpj: '', email: '', name: '', id: '' }} position={0} />
-  );
+  return <Company company={{ cnpj: '', email: '', name: '', id: '' }} />;
 };
 
 export const Default = Template.bind({});
