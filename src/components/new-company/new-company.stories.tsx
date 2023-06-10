@@ -1,13 +1,13 @@
 import type { StoryFn } from '@storybook/react';
-import { Company } from '.';
+import { NewCompany } from '.';
 
 export default {
-  title: 'Components/Company',
-  component: Company
+  title: 'Components/NewCompany',
+  component: NewCompany
 };
 
 const Template: StoryFn = () => {
-  return <Company company={{ cnpj: '', email: '', name: '', id: '' }} />;
+  return <NewCompany />;
 };
 
 export const Default = Template.bind({});

@@ -4,7 +4,7 @@ import SearchIconSvg from '@/src/assets/icon-search.svg';
 export const SearchBarContainer = styled('section', {
   display: 'flex',
   justifyContent: 'end',
-  padding: '$paddingSearchbar 0'
+  margin: '$marginSearch 0'
 });
 
 export const SearchBarForm = styled('form', {

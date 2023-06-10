@@ -28,7 +28,7 @@ export const {
     space: {
       paddingDesktop: '3.5rem',
       paddingMobile: '7rem',
-      paddingSearchbar: '1rem'
+      marginSearch: '2rem'
     },
     sizes: {
       headerDesktop: '3.5rem',
@@ -45,7 +45,8 @@ export const {
     radii: {
       small: '5px',
       medium: '10px',
-      large: '15px'
+      large: '20px',
+      company: '50px'
     }
   },
   media: {
@@ -61,7 +62,28 @@ export const {
     size: (value: string) => ({
       width: value,
       height: value
-    })
+    }),
+    button: (type: 'default' | 'wine') => {
+      const isDefault = type === 'default';
+      return {
+        border: `2px solid ${isDefault ? '$stroke' : '$wine'}`,
+        background: isDefault ? '$white' : '$wine',
+        color: isDefault ? '$secondary' : '$white',
+        borderRadius: '$small',
+        transition: 'all $duration',
+        'svg': {
+          transition: 'all $duration'
+        },
+        '&:hover': {
+          background: isDefault ? '$wine' : '$white',
+          borderColor: '$wine',
+          color: isDefault ? '$white' : '$wine',
+          'svg': {
+            fill: isDefault ? '$white' : '$wine'
+          }
+        }
+      };
+    }
   }
 });
 
@@ -140,8 +162,11 @@ const globalStyles = globalCss({
     fontWeight: 500
   },
   section: {
-    maxWidth: '1450px',
-    margin: 'auto'
+    padding: '0 2rem',
+    transition: 'all $duration',
+    '@bp3': {
+      padding: '0 1.25rem'
+    }
   },
   a: {
     textDecoration: 'none',

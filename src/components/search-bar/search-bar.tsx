@@ -14,7 +14,6 @@ export const SearchBar = () => {
   const { handleSubmit, register } = useForm<SearchBarProps>();
 
   const onSubmit: SubmitHandler<SearchBarProps> = ({ search }) => {
-    console.log(search);
     const queryParams = new URLSearchParams(window.location.search);
 
     if (search) {

@@ -38,31 +38,10 @@ export const CompanyIcon = styled(ClipboardIconSvg, {
 });
 
 export const CompanyInfosContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'start',
-  paddingLeft: '1.5rem'
-});
-
-export const CompanyInfosContent = styled('span', {
-  display: 'flex',
-
-  '@bp3': {
-    flexDirection: 'column'
-  }
+  width: '100%'
 });
 
 export const CompanyInfo = styled('span', {
-  padding: '.1em 0',
-  display: 'flex',
-  '@bp0': {
-    fontSize: '12px'
-  }
-});
-
-export const CompanyInfoSeparator = styled('span', {
-  padding: '0 0.5em',
-  '@bp3': {
-    display: 'none'
-  }
+  padding: '.1em',
+  color: '$secondary'
 });
