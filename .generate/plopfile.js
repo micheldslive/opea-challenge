@@ -11,32 +11,32 @@ module.exports = plop => {
     actions: [
       {
         type: 'add',
-        path: '../src/app/components/{{dashCase name}}/index.ts',
+        path: '../src/components/{{dashCase name}}/index.ts',
         templateFile: 'templates/index.ts.hbs'
       },
       {
         type: 'add',
-        path: '../src/app/components/{{dashCase name}}/{{dashCase name}}.tsx',
+        path: '../src/components/{{dashCase name}}/{{dashCase name}}.tsx',
         templateFile: 'templates/component.tsx.hbs'
       },
       {
         type: 'add',
-        path: '../src/app/components/{{dashCase name}}/{{dashCase name}}.stories.tsx',
+        path: '../src/components/{{dashCase name}}/{{dashCase name}}.stories.tsx',
         templateFile: 'templates/stories.tsx.hbs'
       },
       {
         type: 'add',
-        path: '../src/app/components/{{dashCase name}}/{{dashCase name}}.spec.tsx',
+        path: '../src/components/{{dashCase name}}/{{dashCase name}}.spec.tsx',
         templateFile: 'templates/test.tsx.hbs'
       },
       {
         type: 'add',
-        path: '../src/app/components/{{dashCase name}}/styled.ts',
+        path: '../src/components/{{dashCase name}}/styled.ts',
         templateFile: 'templates/styled.ts.hbs'
       },
       {
         type: 'append',
-        path: '../src/app/components/index.ts',
+        path: '../src/components/index.ts',
         pattern: '',
         template: "export * from './{{dashCase name}}';",
         separator: ''

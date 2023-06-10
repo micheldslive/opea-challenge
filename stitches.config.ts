@@ -13,10 +13,12 @@ export const {
   theme: {
     colors: {
       white: '#ffffff',
+      black: '#000000',
       wine: '#630A37',
       stroke: '#DDDDDD',
       primary: '#616161',
       secondary: '#969696',
+      tertiary: '#b5b5b5',
       background: '#f7f7f7',
       cards: '#F5F5F5'
     },
@@ -24,8 +26,9 @@ export const {
       body: 'Jost, sans-serif'
     },
     space: {
-      headerDesktop: '3.5rem',
-      headerMobile: '7rem'
+      paddingDesktop: '3.5rem',
+      paddingMobile: '7rem',
+      paddingSearchbar: '1rem'
     },
     sizes: {
       headerDesktop: '3.5rem',
@@ -35,7 +38,14 @@ export const {
       duration: '0.3s'
     },
     shadows: {
-      small: '0 1px 2px 0 rgba(0,0,0,.05)'
+      small: '0 1px 2px 0 rgba(0,0,0,.05)',
+      medium: '0 0px 4px 1px rgba(0,0,0,0.2)',
+      large: '0 0px 8px 1px rgba(0,0,0,0.2)'
+    },
+    radii: {
+      small: '5px',
+      medium: '10px',
+      large: '15px'
     }
   },
   media: {
@@ -58,10 +68,12 @@ export const {
 export const darkTheme = createTheme('dark', {
   colors: {
     white: '#000000',
+    black: '#ffffff',
     wine: '#f59c9c',
     stroke: '#222222',
     primary: '#9e9e9e',
     secondary: '#696969',
+    tertiary: '#4a4a4a',
     background: '#080808',
     cards: '#0a0a0a'
   }
@@ -137,6 +149,18 @@ const globalStyles = globalCss({
   },
   'a:hover, a:focus': {
     opacity: '0.8'
+  },
+  button: {
+    padding: '0',
+    margin: '0',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  },
+  'input[type="text"]': {
+    background: 'none',
+    fontSize: '14px',
+    color: '$primary'
   },
   '@import': [
     "url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap')"

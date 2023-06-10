@@ -1,4 +1,4 @@
-import { HomeTemplate } from '@/src/app/templates';
+import { HomeTemplate } from '@/src/templates';
 import { type GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -8,8 +8,11 @@ const Home = () => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'pt'))
-  }
-});
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  console.log(locale);
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'pt'))
+    }
+  };
+};

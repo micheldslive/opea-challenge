@@ -1,6 +1,7 @@
 import * as S from './styled';
 import { useRouter } from 'next/router';
 import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 
 interface SearchBarProps {
   search: string;
@@ -8,6 +9,7 @@ interface SearchBarProps {
 
 export const SearchBar = () => {
   const { pathname, replace, query } = useRouter();
+  const { t } = useTranslation();
 
   const { handleSubmit, register } = useForm<SearchBarProps>();
 
@@ -32,7 +34,7 @@ export const SearchBar = () => {
         aria-label='search-bar'
       >
         <S.SearchBarInput
-          placeholder='Buscar empresa...'
+          placeholder={t('components.search.placeholder')}
           defaultValue={String(query?.search ?? '')}
           {...register('search')}
         />

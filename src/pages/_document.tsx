@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
 
-          <link rel='icon' href='/favicon.svg' />
+          <link rel='icon' href='/favicon.ico' />
         </Head>
         <Main />
         <NextScript />

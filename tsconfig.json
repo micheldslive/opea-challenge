@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -14,12 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
       "@/*": ["./*"]
     }
@@ -30,7 +25,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".eslintrc.cjs",
-    "next.config.js"
+    "next.config.js",
+    "i18next.d.ts",
+    "i18n.ts",
+    "next-i18next.config.js"
   ],
   "exclude": ["node_modules"]
 }
