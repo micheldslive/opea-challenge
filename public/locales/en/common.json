@@ -6,6 +6,25 @@
     }
   },
   "company": {
+    "new": {
+      "title": "Add Company"
+    },
+    "modal": {
+      "create": "Register Company",
+      "update": "Edit Company",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "placeholder": {
+        "name": "Enter the name",
+        "cnpj": "Enter the CNPJ",
+        "email": "Enter the Email"
+      },
+      "label": {
+        "name": "Name",
+        "cnpj": "CNPJ",
+        "email": "Email"
+      }
+    },
     "messages": {
       "create": {
         "sucess": "{{name}} created successfully!",
@@ -24,6 +43,19 @@
   "components": {
     "search": {
       "placeholder": "Search company..."
+    },
+    "zod": {
+      "name": {
+        "min": "Please, enter a valid name."
+      },
+      "email": {
+        "min": "Please, enter a valid email."
+      },
+      "cnpj": {
+        "min": "Please, enter a valid CNPJ.",
+        "max": "Please, enter a valid CNPJ.",
+        "numeric": "Please, enter numeric digits only."
+      }
     }
   }
 }

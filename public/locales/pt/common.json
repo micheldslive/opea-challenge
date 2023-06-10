@@ -6,6 +6,25 @@
     }
   },
   "company": {
+    "new": {
+      "title": "Adicionar Empresa"
+    },
+    "modal": {
+      "create": "Cadastrar Empresa",
+      "update": "Editar Empresa",
+      "cancel": "Cancelar",
+      "confirm": "Confirmar",
+      "placeholder": {
+        "name": "Digite o nome",
+        "cnpj": "Digite o CNPJ",
+        "email": "Digite o e-mail"
+      },
+      "label": {
+        "name": "Nome",
+        "cnpj": "CNPJ",
+        "email": "E-mail"
+      }
+    },
     "messages": {
       "create": {
         "sucess": "{{name}} criada com sucesso!",
@@ -24,6 +43,19 @@
   "components": {
     "search": {
       "placeholder": "Buscar empresa..."
+    },
+    "zod": {
+      "name": {
+        "min": "Por favor, insira um nome."
+      },
+      "email": {
+        "min": "Por favor, insira um email válido."
+      },
+      "cnpj": {
+        "min": "Por favor, insira um CNPJ válido.",
+        "max": "Por favor, insira um CNPJ válido.",
+        "numeric": "Por favor, insira somente digitos numéricos."
+      }
     }
   }
 }
