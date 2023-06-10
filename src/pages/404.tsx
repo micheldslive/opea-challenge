@@ -1,4 +1,4 @@
-import { NotFoundTemplate } from '@/src/app/templates';
+import { NotFoundTemplate } from '@/src/templates';
 
 const NotFound = () => {
   return <NotFoundTemplate />;

@@ -2,3 +2,4 @@ node_modules
 .generate
 storybook_static
 .next
+next.config.js

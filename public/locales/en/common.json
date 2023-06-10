@@ -4,5 +4,26 @@
       "title": "Opea - Frontend Challenge",
       "description": "Description."
     }
+  },
+  "company": {
+    "messages": {
+      "create": {
+        "sucess": "{{name}} created successfully!",
+        "error": "We had a problem creating your company, please try again."
+      },
+      "update": {
+        "sucess": "{{name}} updated successfully!",
+        "error": "We had a problem updating your company, please try again."
+      },
+      "delete": {
+        "sucess": "Company deleted successfully!",
+        "error": "We had a problem deleting your company, please try again."
+      }
+    }
+  },
+  "components": {
+    "search": {
+      "placeholder": "Search company..."
+    }
   }
 }

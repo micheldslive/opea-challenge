@@ -1,19 +1,29 @@
 import { styled } from '@/stitches.config';
-import OpeaLogoSvg from '@/src/app/assets/opea-logo.svg';
-import UserImageSvg from '@/src/app/assets/icon-user.svg';
+import OpeaLogoSvg from '@/src/assets/opea-logo.svg';
+import UserImageSvg from '@/src/assets/icon-user.svg';
 
 export const Header = styled('header', {
   minHeight: '$headerDesktop',
   background: '$white',
   position: 'fixed',
   width: '100%',
-  boxShadow: '$small'
+  boxShadow: '$small',
+
+  '@bp0': {
+    minHeight: '$headerMobile'
+  }
 });
 export const HeaderContainter = styled('section', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  minHeight: 'inherit'
+  minHeight: 'inherit',
+
+  '@bp0': {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: '1rem'
+  }
 });
 
 export const OpeaLogo = styled(OpeaLogoSvg, {

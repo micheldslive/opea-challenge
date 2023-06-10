@@ -6,6 +6,7 @@ import NextNProgress from 'nextjs-progressbar';
 
 export const AnimatePageTransition = ({ children }: PropsWithChildren) => {
   const { route } = useRouter();
+
   return (
     <AnimatePresence mode='wait'>
       <motion.div
@@ -14,7 +15,7 @@ export const AnimatePageTransition = ({ children }: PropsWithChildren) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 1 }}
       >
-        <NextNProgress color={theme.colors.wine.name} />
+        <NextNProgress color={theme.colors.wine.value} />
         {children}
       </motion.div>
     </AnimatePresence>

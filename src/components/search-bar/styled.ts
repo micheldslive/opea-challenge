@@ -1,9 +1,10 @@
 import { styled } from '@/stitches.config';
-import SearchIconSvg from '@/src/app/assets/icon-search.svg';
+import SearchIconSvg from '@/src/assets/icon-search.svg';
 
 export const SearchBarContainer = styled('section', {
   display: 'flex',
-  justifyContent: 'end'
+  justifyContent: 'end',
+  padding: '$paddingSearchbar 0'
 });
 
 export const SearchBarForm = styled('form', {
@@ -27,12 +28,8 @@ export const SearchBarInput = styled('input', {
 });
 
 export const SearchBarButton = styled('button', {
-  background: 'none',
-  border: 'none',
   padding: '0 .75rem',
-  margin: '0',
   display: 'flex',
-  cursor: 'pointer',
   height: '100%',
   alignItems: 'center'
 });
