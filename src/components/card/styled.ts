@@ -10,6 +10,13 @@ export const CompanyContent = styled('button', {
   alignItems: 'center',
   width: '100%',
   fontSize: 'initial',
+  transition: 'all $duration',
+
+  '&:hover': {
+    opacity: '0.8',
+    transform: 'translateY(-5px)',
+    scale: '1.01'
+  },
 
   variants: {
     transparent: {
