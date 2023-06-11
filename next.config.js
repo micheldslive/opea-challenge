@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const { parsed: localEnv } = require('dotenv').config();
-const webpack = require('webpack');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -17,7 +15,6 @@ const nextConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack']
     });
-    config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
     return config;
   }
 };
