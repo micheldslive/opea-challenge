@@ -2,10 +2,7 @@ import * as S from './styled';
 import { useRouter } from 'next/router';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
-
-interface SearchBarProps {
-  search: string;
-}
+import { type SearchBarProps } from '@/src/@types';
 
 export const SearchBar = () => {
   const { pathname, replace, query } = useRouter();

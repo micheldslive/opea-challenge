@@ -36,3 +36,17 @@ export interface ApiProps {
 export interface StringMaskProps {
   (source: string, format: string, def?: string): string;
 }
+
+export interface SearchBarProps {
+  search: string;
+}
+
+export interface IOpeaProps {
+  dark: boolean;
+  locale: string;
+}
+
+export interface IOpeaStore extends IOpeaProps {
+  setDark: (updater: (prev: boolean) => boolean) => void;
+  setLanguage: (language: IOpeaProps['locale']) => void;
+}
