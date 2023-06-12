@@ -1,10 +1,10 @@
 import { styled } from '@/stitches.config';
 import SearchIconSvg from '@/src/assets/icon-search.svg';
 
-export const SearchBarContainer = styled('section', {
+export const SearchBarContainer = styled('div', {
   display: 'flex',
-  justifyContent: 'end',
-  margin: '$marginSearch 0'
+  flexGrow: 1,
+  justifyContent: 'end'
 });
 
 export const SearchBarForm = styled('form', {
@@ -22,7 +22,7 @@ export const SearchBarInput = styled('input', {
   background: 'none',
   border: 'none',
   padding: '0.4rem 0 0.4rem .75rem',
-  fontSize: '14px',
+  fontSize: '.875rem',
   color: '$primary',
   width: '100%'
 });
