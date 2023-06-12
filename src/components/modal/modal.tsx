@@ -1,23 +1,16 @@
 import { useModalForm } from '@/src/core/hooks';
-import { Input } from '@/src/components';
+import { Input, InputCNPJ } from '@/src/components';
 import { useTranslation } from 'next-i18next';
 import * as S from './styled';
 
 export const CompanyFormModal = () => {
-  const {
-    open,
-    isEdit,
-    cleanedData,
-    clearModal,
-    onDelete,
-    handleSubmit,
-    onSubmit
-  } = useModalForm();
+  const { open, isEdit, company, onClear, onDelete, handleSubmit, onSubmit } =
+    useModalForm();
 
   const { t } = useTranslation();
   return (
     <S.ModalContent open={open}>
-      <S.ModalContainer onClick={clearModal}></S.ModalContainer>
+      <S.ModalContainer onClick={onClear}></S.ModalContainer>
       <S.ModalForm onSubmit={handleSubmit(onSubmit)}>
         <S.ModalHeader>
           <S.ModalHeaderTitle>
@@ -26,7 +19,7 @@ export const CompanyFormModal = () => {
           <S.ModalHeaderCloseButton
             type='reset'
             aria-label='modal-icon-close'
-            onClick={clearModal}
+            onClick={onClear}
           >
             <S.ModalHeaderCloseIcon />
           </S.ModalHeaderCloseButton>
@@ -36,20 +29,19 @@ export const CompanyFormModal = () => {
             name='name'
             label={t('company.modal.label.name')}
             placeholder={t('company.modal.placeholder.name')}
-            defaultValue={cleanedData.name || ''}
+            defaultValue={company?.name || ''}
           />
-          <Input
+          <InputCNPJ
             name='cnpj'
             label={t('company.modal.label.cnpj')}
             placeholder={t('company.modal.placeholder.cnpj')}
-            defaultValue={cleanedData.cnpj || ''}
-            maxLength={14}
+            defaultValue={company?.cnpj || ''}
           />
           <Input
             name='email'
             label={t('company.modal.label.email')}
             placeholder={t('company.modal.placeholder.email')}
-            defaultValue={cleanedData.email || ''}
+            defaultValue={company?.email || ''}
             type='email'
           />
         </S.ModalFormContent>
@@ -68,7 +60,7 @@ export const CompanyFormModal = () => {
               type='button'
               variant='default'
               aria-label='modal-cancel'
-              onClick={clearModal}
+              onClick={onClear}
             >
               {t('company.modal.cancel')}
             </S.ModalFooterCancelConfirm>

@@ -7,8 +7,10 @@ export const opeaStore = createStore<IOpeaStore>()(
     set => ({
       dark: false,
       locale: 'pt',
+      page: 1,
       setDark: updater => set(state => ({ dark: updater(state.dark) })),
-      setLanguage: locale => set(() => ({ locale }))
+      setLanguage: locale => set(() => ({ locale })),
+      setPage: updater => set(state => ({ page: updater(state.page) }))
     }),
     {
       name: 'opea-store'

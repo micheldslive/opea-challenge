@@ -1,4 +1,9 @@
-import { SearchBar, CompanyList, CompanyFormModal } from '@/src/components';
+import {
+  SearchBar,
+  CompanyList,
+  CompanyFormModal,
+  Pagination
+} from '@/src/components';
 import { CompanyFormProvider } from '@/src/core/hooks';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
@@ -19,7 +24,10 @@ export const HomeTemplate = () => {
         />
       </Head>
       <S.HomeLayout>
-        <SearchBar />
+        <S.HomeContainer>
+          <Pagination />
+          <SearchBar />
+        </S.HomeContainer>
         <CompanyList />
         <CompanyFormProvider>
           <CompanyFormModal />

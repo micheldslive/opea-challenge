@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import * as S from './styled';
 
 export const CompanyList = () => {
-  const { companyList, isLoading } = useCompany();
+  const { paginatedData, isLoading } = useCompany();
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -16,6 +16,7 @@ export const CompanyList = () => {
       }
     }
   };
+
   return (
     <S.CompanyListContent>
       <NewCompany />
@@ -25,7 +26,7 @@ export const CompanyList = () => {
         </S.CompanyListLoaderContent>
       ) : (
         <motion.div variants={variants} initial='hidden' animate='visible'>
-          {companyList?.map(company => {
+          {paginatedData?.map(company => {
             return (
               <motion.div key={company.id} variants={variants}>
                 <Company company={company} />

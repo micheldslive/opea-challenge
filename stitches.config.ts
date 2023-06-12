@@ -184,7 +184,7 @@ const globalStyles = globalCss({
   },
   'input[type="text"]': {
     background: 'none',
-    fontSize: '14px',
+    fontSize: '.875rem',
     color: '$primary'
   },
   '@import': [

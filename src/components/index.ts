@@ -6,3 +6,4 @@ export * from './new-company';
 export * from './input';
 export * from './card';
 export * from './modal';
+export * from './pagination';
