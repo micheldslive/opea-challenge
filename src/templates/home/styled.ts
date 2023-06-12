@@ -12,7 +12,7 @@ export const HomeContainer = styled('section', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  margin: '$marginSearch 0',
+  margin: '$marginSearch',
   gap: '1rem',
 
   '@bp0': {

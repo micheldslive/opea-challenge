@@ -1,6 +1,8 @@
 import { styled, keyframes } from '@/stitches.config';
 
-export const CompanyListContent = styled('section', {});
+export const CompanyListContent = styled('section', {
+  padding: '1rem 2rem'
+});
 
 const loader = keyframes({
   '0%': {
