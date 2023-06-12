@@ -24,8 +24,8 @@ export const CompanyContent = styled('button', {
 export const CompanyIconContent = styled('div', {
   borderRadius: '50%',
   border: '2px solid $secondary',
-  width: '40px',
-  height: '40px',
+  minWidth: '2.5rem',
+  minHeight: '2.5rem',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center'
@@ -55,8 +55,9 @@ export const CompanyInfosContent = styled('span', {
 export const CompanyInfo = styled('span', {
   padding: '.1em 0',
   display: 'flex',
+  textAlign: 'start',
   '@bp0': {
-    fontSize: '12px'
+    fontSize: '.75rem'
   }
 });
 

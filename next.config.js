@@ -8,7 +8,9 @@ const nextConfig = {
     defaultLocale: 'pt'
   },
   env: {
-    BASE_URL: process.env.BASE_URL
+    BASE_URL: process.env.BASE_URL,
+    AMOUNT: process.env.AMOUNT,
+    COMPANY_KEY: process.env.COMPANY_KEY,
   },
   webpack(config) {
     config.module.rules.push({
