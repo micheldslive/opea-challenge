@@ -20,3 +20,9 @@ export const HomeContainer = styled('section', {
     alignItems: 'center'
   }
 });
+
+export const HomerContent = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem'
+});

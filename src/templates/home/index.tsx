@@ -2,7 +2,9 @@ import {
   SearchBar,
   CompanyList,
   CompanyFormModal,
-  Pagination
+  Pagination,
+  LanguageSelect,
+  Themming
 } from '@/src/components';
 import { CompanyFormProvider } from '@/src/core/hooks';
 import { useTranslation } from 'next-i18next';
@@ -26,6 +28,10 @@ export const HomeTemplate = () => {
       <S.HomeLayout>
         <S.HomeContainer>
           <Pagination />
+          <S.HomerContent>
+            <LanguageSelect />
+            <Themming />
+          </S.HomerContent>
           <SearchBar />
         </S.HomeContainer>
         <CompanyList />

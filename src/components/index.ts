@@ -7,3 +7,5 @@ export * from './input';
 export * from './card';
 export * from './modal';
 export * from './pagination';
+export * from './language';
+export * from './themming';
