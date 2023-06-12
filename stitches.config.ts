@@ -28,7 +28,7 @@ export const {
     space: {
       paddingDesktop: '3.5rem',
       paddingMobile: '7rem',
-      marginSearch: '2rem'
+      marginSearch: '4rem 0 0'
     },
     sizes: {
       headerDesktop: '3.5rem',

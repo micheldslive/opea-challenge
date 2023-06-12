@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 
 export const ThemeWrapper = styled('div', {
   background: '$background',
-  height: '100vh'
+  minHeight: '100vh',
+  height: 'fit-content'
 });
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
