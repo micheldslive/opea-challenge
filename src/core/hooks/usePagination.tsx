@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useMemo } from 'react';
-import { useCompany } from './useCompany';
+import { useCompany } from '.';
 
 export const usePagination = () => {
   const { totalPages } = useCompany();

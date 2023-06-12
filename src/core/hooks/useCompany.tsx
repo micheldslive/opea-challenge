@@ -1,37 +1,27 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { CompanyAPI } from '@/src/core/schemas';
+import { useOpeaStore } from '@/src/core/store';
+import { Api } from '../services/http-request';
 import { useRouter } from 'next/router';
-import { toast } from 'sonner';
-import { useMemo } from 'react';
-import { type CompanyFormProps } from '@/src/@types';
 import { useTranslation } from 'next-i18next';
-import { api } from '../utils';
+import { toast } from 'sonner';
+import { type CompanyFormProps } from '@/src/@types';
+import { useMemo } from 'react';
 
-export const companyListKey = ['company-list'];
-export const limit = 12;
-const baseURL = process.env.BASE_URL;
+const amount = Number(process.env.AMOUNT);
+const companyKey = process.env.COMPANY_KEY;
 
 export const useCompany = () => {
+  const { page, setPage } = useOpeaStore();
   const queryClient = useQueryClient();
   const { t } = useTranslation();
   const { query } = useRouter();
+  const search = query.search ?? '';
 
-  const {
-    data: companyList,
-    isLoading,
-    isError
-  } = useQuery(
-    [...companyListKey, { search: query.search ?? '' }],
-    () =>
-      fetch(`${baseURL}${query.search ? `?text=${query.search}` : ''}`).then(
-        async response => {
-          const data = await response.json();
+  const api = new Api();
 
-          const info = CompanyAPI.safeParse(data);
-
-          return info.success ? info.data : [];
-        }
-      ),
+  const { data, isLoading, isError } = useQuery(
+    [companyKey, { search, page }],
+    () => api.getCompanys({}),
     {
       cacheTime: 6000,
       staleTime: 6000
@@ -39,10 +29,10 @@ export const useCompany = () => {
   );
 
   const { mutate: deleteCompany } = useMutation(
-    (id: string) => api({ method: 'DELETE', id }),
+    (id: string) => api.deleteCompany(id),
     {
       onSuccess: () => {
-        void queryClient.invalidateQueries(companyListKey);
+        void queryClient.invalidateQueries([companyKey]);
         toast.success(t('company.messages.delete.sucess'));
       },
       onError: () => {
@@ -52,10 +42,10 @@ export const useCompany = () => {
   );
 
   const { mutate: createCompany } = useMutation(
-    (body: CompanyFormProps) => api({ method: 'POST', body }),
+    (body: CompanyFormProps) => api.createCompany({ body }),
     {
       onSuccess: (__, variables) => {
-        void queryClient.invalidateQueries(companyListKey);
+        void queryClient.invalidateQueries([companyKey]);
         toast.success(
           t('company.messages.create.sucess', {
             name: variables.name
@@ -70,11 +60,11 @@ export const useCompany = () => {
   );
 
   const { mutate: updateCompany } = useMutation(
-    ({ body, id }: { body: CompanyFormProps; id: string }) =>
-      api({ method: 'PUT', body, id }),
+    ({ id, body }: { id: string; body: CompanyFormProps }) =>
+      api.updateCompany(id, { body }),
     {
       onSuccess: (__, variables) => {
-        void queryClient.invalidateQueries(companyListKey);
+        void queryClient.invalidateQueries([companyKey]);
         toast.success(
           t('company.messages.update.sucess', {
             name: variables.body.name
@@ -89,26 +79,27 @@ export const useCompany = () => {
 
   const paginatedData = useMemo(
     () =>
-      companyList?.slice(
-        (+String(query?.page ?? 1) - 1) * limit,
-        +String(query?.page ?? 1) * limit
+      data?.slice(
+        (+String(query?.page ?? 1) - 1) * amount,
+        +String(query?.page ?? 1) * amount
       ),
-    [companyList, query]
+    [data, query]
   );
 
   const totalPages = useMemo(
-    () => Math.ceil((companyList?.length ?? 1) / limit),
-    [companyList]
+    () => Math.ceil((data?.length ?? 1) / amount),
+    [data]
   );
 
   return {
-    companyList,
+    companyList: data,
     paginatedData,
     totalPages,
     isError,
     isLoading,
-    deleteCompany,
+    setPage,
     createCompany,
-    updateCompany
+    updateCompany,
+    deleteCompany
   };
 };
