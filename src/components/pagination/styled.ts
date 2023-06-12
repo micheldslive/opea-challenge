@@ -8,7 +8,8 @@ const paginationStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '1rem',
-  border: '2px solid $stroke'
+  border: '2px solid $stroke',
+  color: '$primary'
 };
 
 export const PaginationContent = styled('div', {
