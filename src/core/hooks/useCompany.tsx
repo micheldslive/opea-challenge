@@ -1,5 +1,4 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useOpeaStore } from '@/src/core/store';
 import { Api } from '../services/http-request';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -8,20 +7,20 @@ import { type CompanyFormProps } from '@/src/@types';
 import { useMemo } from 'react';
 
 const amount = Number(process.env.AMOUNT);
-const companyKey = process.env.COMPANY_KEY;
+export const companyKey = process.env.COMPANY_KEY;
 
 export const useCompany = () => {
-  const { page, setPage } = useOpeaStore();
   const queryClient = useQueryClient();
   const { t } = useTranslation();
   const { query } = useRouter();
-  const search = query.search ?? '';
+
+  const search = useMemo(() => query.search ?? '', [query.search]);
 
   const api = new Api();
 
   const { data, isLoading, isError } = useQuery(
-    [companyKey, { search, page }],
-    () => api.getCompanys({}),
+    [companyKey, { search }],
+    () => api.getCompanys(search),
     {
       cacheTime: 6000,
       staleTime: 6000
@@ -97,7 +96,6 @@ export const useCompany = () => {
     totalPages,
     isError,
     isLoading,
-    setPage,
     createCompany,
     updateCompany,
     deleteCompany

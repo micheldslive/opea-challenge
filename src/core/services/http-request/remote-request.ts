@@ -1,5 +1,5 @@
 import { type HttpPost, type HttpResponse } from '@/src/core/types';
-import { type GetCompanys, type CompanyListBody } from '@/src/@types';
+import { type CompanyListBody } from '@/src/@types';
 import { httpResponseStatus } from './remote-status';
 
 export class RemoteRequest {
@@ -17,10 +17,9 @@ export class RemoteRequest {
     return httpResponseStatus(httpResponse);
   }
 
-  async get(body: GetCompanys): Promise<HttpResponse> {
+  async get(): Promise<HttpResponse> {
     const httpResponse = await this.httpPostClient.get({
-      url: this.url,
-      body
+      url: this.url
     });
 
     return httpResponseStatus(httpResponse);

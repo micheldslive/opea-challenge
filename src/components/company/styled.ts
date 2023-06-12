@@ -41,7 +41,8 @@ export const CompanyInfosContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'start',
-  paddingLeft: '1.5rem'
+  paddingLeft: '1.5rem',
+  color: '$black'
 });
 
 export const CompanyInfosContent = styled('span', {

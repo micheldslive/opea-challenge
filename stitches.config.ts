@@ -89,14 +89,14 @@ export const {
 
 export const darkTheme = createTheme('dark', {
   colors: {
-    white: '#000000',
+    white: '#222222',
     black: '#ffffff',
     wine: '#f59c9c',
-    stroke: '#222222',
+    stroke: '#444444',
     primary: '#9e9e9e',
     secondary: '#696969',
     tertiary: '#4a4a4a',
-    background: '#080808',
+    background: '#000000',
     cards: '#0a0a0a'
   }
 });
@@ -110,9 +110,6 @@ const globalStyles = globalCss({
     padding: '0',
     WebkitFontSmoothing: 'antialiased',
     border: 0
-  },
-  body: {
-    background: '$background'
   },
   '::-webkit-scrollbar': {
     width: '0.375rem'
