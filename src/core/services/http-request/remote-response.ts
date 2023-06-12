@@ -1,16 +1,14 @@
-import type {
-  CompanyAPIProps,
-  CompanyListBody,
-  GetCompanys
-} from '@/src/@types';
+import type { CompanyAPIProps, CompanyListBody } from '@/src/@types';
 import { RemoteRequest } from '@/src/core/services/http-request';
 import { PostClient } from '@/src/core/services/post-client';
 import { type HttpResponse } from '@/src/core/types';
 
 export class Api {
-  getCompanys = async (params: GetCompanys): Promise<CompanyAPIProps[]> => {
-    const remoteRequest = new RemoteRequest('/', new PostClient());
-    const response = await remoteRequest.get(params);
+  getCompanys = async (
+    text?: string | string[]
+  ): Promise<CompanyAPIProps[]> => {
+    const remoteRequest = new RemoteRequest(`?text=${text}`, new PostClient());
+    const response = await remoteRequest.get();
     return response?.data;
   };
 

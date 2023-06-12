@@ -65,7 +65,7 @@ export type CompanyListProps = {
   text?: string | string[];
 };
 
-export interface CompanyListBody extends CompanyListProps {
+export interface CompanyListBody {
   body?: CompanyFormProps;
 }
 export interface GetCompanys extends CompanyListProps {
