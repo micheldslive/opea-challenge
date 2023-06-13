@@ -114,9 +114,6 @@ devDependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
-  dotenv:
-    specifier: ^16.1.4
-    version: 16.1.4
   eslint:
     specifier: 8.42.0
     version: 8.42.0
