@@ -18,14 +18,14 @@ export const useCompany = () => {
 
   const api = new Api();
 
-  const { data, isLoading, isError } = useQuery(
-    [companyKey, { search }],
-    () => api.getCompanys(search),
-    {
-      cacheTime: 6000,
-      staleTime: 6000
-    }
-  );
+  const {
+    data: companyList,
+    isLoading,
+    isError
+  } = useQuery([companyKey, { search }], () => api.getCompanys(search), {
+    cacheTime: 6000,
+    staleTime: 6000
+  });
 
   const { mutate: deleteCompany } = useMutation(
     (id: string) => api.deleteCompany(id),
@@ -76,23 +76,23 @@ export const useCompany = () => {
     }
   );
 
-  const paginatedData = useMemo(
+  const paginatedCompanyList = useMemo(
     () =>
-      data?.slice(
+      companyList?.slice(
         (+String(query?.page ?? 1) - 1) * amount,
         +String(query?.page ?? 1) * amount
-      ),
-    [data, query]
+      ) || [],
+    [companyList, query]
   );
 
   const totalPages = useMemo(
-    () => Math.ceil((data?.length ?? 1) / amount),
-    [data]
+    () => Math.ceil((companyList?.length ?? 1) / amount) || 1,
+    [companyList]
   );
 
   return {
-    companyList: data,
-    paginatedData,
+    companyList,
+    paginatedCompanyList,
     totalPages,
     isError,
     isLoading,
