@@ -73,7 +73,9 @@ cd opea-challenge
 pnpm i
 ```
 
-4. Rode sua aplicação em sua [conexão local](http://localhost:3000)
+3. Altere o arquivo `.env.example` para `.env`, caso contrário o projeto não funcionará corretamente:
+
+5. Rode sua aplicação em sua [conexão local](http://localhost:3000)
 
 ```bash
 pnpm dev
@@ -83,7 +85,7 @@ pnpm dev
 
 ## ▶️ Executando o projeto (Docker)
 
-##### Com o Docker devidamente instalado e o repositório Clonado, Execute o comando abaixo:
+##### Com o Docker devidamente instalado e o repositório Clonado, altere o arquivo `.env.example` para `.env`, caso contrário o projeto não funcionará corretamente, após essa alteração, Execute o comando abaixo:
 
 ```bash
 docker compose up
