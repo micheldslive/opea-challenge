@@ -19,7 +19,7 @@ export const ThemeButton = styled('button', {
   cursor: 'pointer',
   padding: '0.35rem',
   transition: 'background $duration ease-in-out',
-  '&:hover': { background: '$hover' }
+  hover: 0.8
 });
 
 export const Moon = styled(MoonIconSvg, {
