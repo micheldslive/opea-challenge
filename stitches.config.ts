@@ -83,7 +83,14 @@ export const {
           }
         }
       };
-    }
+    },
+
+    hover: (opacity: number) => ({
+      transition: 'all $duration',
+      '&:hover, &:focus': {
+        opacity
+      }
+    })
   }
 });
 
