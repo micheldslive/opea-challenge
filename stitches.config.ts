@@ -186,7 +186,7 @@ const globalStyles = globalCss({
     border: 'none',
     cursor: 'pointer'
   },
-  'input[type="text"]': {
+  'input[type="text"], input[type="email"]': {
     background: 'none',
     fontSize: '.875rem',
     color: '$primary'
