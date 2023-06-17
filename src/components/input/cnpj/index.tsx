@@ -30,6 +30,7 @@ export const InputCNPJ = ({
     <S.InputContent>
       <S.InputLabel htmlFor={name}>{label}</S.InputLabel>
       <S.InputMasked
+        type='text'
         mask='99.999.999/9999-99'
         alwaysShowMask={false}
         placeholder={placeholder}
