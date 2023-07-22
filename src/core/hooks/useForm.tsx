@@ -6,7 +6,8 @@ import type { CompanyFormProps } from '@/src/@types';
 
 export const CompanyFormProvider = ({ children }: PropsWithChildren) => {
   const methods = useForm<CompanyFormProps>({
-    resolver: zodResolver(CompanyForm)
+    resolver: zodResolver(CompanyForm),
+    mode: 'all'
   });
 
   return <FormProvider {...methods}>{children}</FormProvider>;

@@ -1,3 +1,3 @@
 export * from './fetch';
-export * from './formatBody';
+export * from './formatData';
 export * from './maskCNPJ';

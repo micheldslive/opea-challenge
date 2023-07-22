@@ -18,7 +18,12 @@ export const PaginationContent = styled('div', {
 });
 
 export const PaginationButton = styled('button', {
-  ...paginationStyle
+  ...paginationStyle,
+
+  '&[disabled]': {
+    color: '$stroke',
+    cursor: 'not-allowed'
+  }
 });
 export const PaginationPage = styled('div', {
   ...paginationStyle,

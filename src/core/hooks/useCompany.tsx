@@ -12,11 +12,18 @@ export const companyKey = process.env.COMPANY_KEY;
 export const useCompany = () => {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
-  const { query } = useRouter();
+  const { query, replace, pathname } = useRouter();
 
   const search = useMemo(() => query.search ?? '', [query.search]);
 
   const api = new Api();
+
+  const handleClearQuerys = () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    queryParams.delete('edit');
+    queryParams.delete('create');
+    void replace(`${pathname}?${queryParams.toString()}`);
+  };
 
   const {
     data: companyList,
@@ -33,6 +40,7 @@ export const useCompany = () => {
       onSuccess: () => {
         void queryClient.invalidateQueries([companyKey]);
         toast.success(t('company.messages.delete.sucess'));
+        handleClearQuerys();
       },
       onError: () => {
         toast.error(t('company.messages.delete.error'));
@@ -50,6 +58,7 @@ export const useCompany = () => {
             name: variables.name
           })
         );
+        handleClearQuerys();
       },
 
       onError: () => {
@@ -69,6 +78,7 @@ export const useCompany = () => {
             name: variables.body.name
           })
         );
+        handleClearQuerys();
       },
       onError: () => {
         toast.error(t('company.messages.update.error'));
@@ -91,6 +101,7 @@ export const useCompany = () => {
   );
 
   return {
+    query,
     companyList,
     paginatedCompanyList,
     totalPages,
@@ -98,6 +109,7 @@ export const useCompany = () => {
     isLoading,
     createCompany,
     updateCompany,
-    deleteCompany
+    deleteCompany,
+    handleClearQuerys
   };
 };
