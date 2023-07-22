@@ -4,13 +4,20 @@ import { useTranslation } from 'next-i18next';
 import * as S from './styled';
 
 export const CompanyFormModal = () => {
-  const { open, isEdit, company, onClear, onDelete, handleSubmit, onSubmit } =
-    useModalForm();
+  const {
+    open,
+    isEdit,
+    company,
+    handleClearQuerys,
+    onDelete,
+    handleSubmit,
+    onSubmit
+  } = useModalForm();
 
   const { t } = useTranslation();
   return (
     <S.ModalContent open={open}>
-      <S.ModalContainer onClick={onClear}></S.ModalContainer>
+      <S.ModalContainer onClick={handleClearQuerys}></S.ModalContainer>
       <S.ModalForm onSubmit={handleSubmit(onSubmit)}>
         <S.ModalHeader>
           <S.ModalHeaderTitle>
@@ -19,7 +26,7 @@ export const CompanyFormModal = () => {
           <S.ModalHeaderCloseButton
             type='reset'
             aria-label='modal-icon-close'
-            onClick={onClear}
+            onClick={handleClearQuerys}
           >
             <S.ModalHeaderCloseIcon />
           </S.ModalHeaderCloseButton>
@@ -60,7 +67,7 @@ export const CompanyFormModal = () => {
               type='button'
               variant='default'
               aria-label='modal-cancel'
-              onClick={onClear}
+              onClick={handleClearQuerys}
             >
               {t('company.modal.cancel')}
             </S.ModalFooterCancelConfirm>

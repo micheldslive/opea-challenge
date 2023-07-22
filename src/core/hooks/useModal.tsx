@@ -1,58 +1,46 @@
-import { useRouter } from 'next/router';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useFormContext, type SubmitHandler } from 'react-hook-form';
 import type { CompanyFormProps } from '@/src/@types';
-import { formatBody } from '@/src/core/utils';
+import { formatData } from '@/src/core/utils';
 import { useCompany } from '.';
 
 export const useModalForm = () => {
-  const { query, replace, pathname } = useRouter();
-  const { companyList, deleteCompany, updateCompany, createCompany } =
-    useCompany();
+  const {
+    query,
+    companyList,
+    deleteCompany,
+    updateCompany,
+    createCompany,
+    handleClearQuerys
+  } = useCompany();
   const { handleSubmit } = useFormContext<CompanyFormProps>();
 
-  const isEdit = !!query.edit;
-  const open = isEdit || !!query.create;
+  const { edit, create } = query;
 
   const company = useMemo(
-    () => companyList?.find(company => company.id === query?.edit),
+    () => companyList?.find(company => company.id === edit),
 
-    [companyList, query.edit]
+    [companyList, edit]
   );
 
-  const onSubmit: SubmitHandler<CompanyFormProps> = body => {
-    const formatedBody = formatBody(body);
-    query.edit
-      ? updateCompany({ body: formatedBody, id: String(company?.id) })
-      : createCompany(formatedBody);
-
-    const queryParams = new URLSearchParams(window.location.search);
-
-    queryParams.delete('edit');
-    queryParams.delete('create');
-
-    void replace(`${pathname}?${queryParams.toString()}`);
+  const onSubmit: SubmitHandler<CompanyFormProps> = data => {
+    const body = formatData(data);
+    edit
+      ? updateCompany({ body, id: String(company?.id) })
+      : createCompany(body);
   };
 
   const onDelete = () => {
     deleteCompany(String(company?.id));
-    onClear();
   };
 
-  const onClear = useCallback(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.delete('edit');
-    queryParams.delete('create');
-    void replace(`${pathname}?${queryParams.toString()}`);
-  }, [pathname, replace]);
-
   return {
-    open,
-    isEdit,
+    open: !!edit || !!create,
+    isEdit: !!edit,
     company,
     onSubmit,
     onDelete,
-    onClear,
+    handleClearQuerys,
     handleSubmit,
     deleteCompany
   };
